@@ -1,0 +1,64 @@
+{
+  "assumptions": {
+    "air_density_kg_m3": 1.0,
+    "wind_speed_m_s": 10.0,
+    "drag_coefficient": 1.2,
+    "slew_deg_s": 1.0,
+    "acceleration_deg_s2": 0.5,
+    "torque_margin": 1.5,
+    "motor_torque_constant_Nm_Arms": 9.24,
+    "motor_resistance_per_phase_ohm_25C": 12.2,
+    "HA": {
+      "J_kg_m2": 12.0,
+      "mass_kg": 100.0,
+      "residual_com_m": 0.001,
+      "friction_Nm": 1.5,
+      "cable_Nm": 0.5,
+      "area_m2": 0.2,
+      "lever_m": 0.3
+    },
+    "DEC": {
+      "J_kg_m2": 4.5,
+      "mass_kg": 50.0,
+      "residual_com_m": 0.001,
+      "friction_Nm": 0.8,
+      "cable_Nm": 0.4,
+      "area_m2": 0.15,
+      "lever_m": 0.25
+    }
+  },
+  "axes": {
+    "HA": {
+      "gravity_bound_Nm": 0.981,
+      "wind_Nm": 3.5999999999999996,
+      "acceleration_Nm": 0.10471975511965978,
+      "steady_bound_Nm": 6.5809999999999995,
+      "peak_bound_Nm": 6.685719755119659,
+      "continuous_design_Nm": 9.8715,
+      "peak_design_Nm": 10.028579632679488,
+      "steady_current_Arms": 0.7122294372294372,
+      "copper_loss_W_25C": 18.566110227975486,
+      "kinetic_energy_J": 0.0018277045187202515
+    },
+    "DEC": {
+      "gravity_bound_Nm": 0.4905,
+      "wind_Nm": 2.25,
+      "acceleration_Nm": 0.039269908169872414,
+      "steady_bound_Nm": 3.9404999999999997,
+      "peak_bound_Nm": 3.979769908169872,
+      "continuous_design_Nm": 5.910749999999999,
+      "peak_design_Nm": 5.969654862254808,
+      "steady_current_Arms": 0.42646103896103893,
+      "copper_loss_W_25C": 6.656406049713271,
+      "kinetic_energy_J": 0.0006853891945200943
+    }
+  },
+  "encoder_step_arcsec": {
+    "26": 0.019311904907226562,
+    "28": 0.004827976226806641,
+    "32": 0.00030174851417541504
+  },
+  "illustrative_axis_jitter_arcsec": 0.017677669529663688,
+  "apparent_RSS_budget_arcsec": 0.09486832980505139,
+  "stiffness_Nm_per_rad_for_1Nm_at_002arcsec": 10313240.312350001
+}

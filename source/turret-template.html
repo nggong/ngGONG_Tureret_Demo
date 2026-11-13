@@ -1,0 +1,57 @@
+<div id="nggong-turret-v1">
+<style>
+#nggong-turret-v1{display:flex;flex-direction:column;gap:calc(var(--font-size-base)*.8);color:var(--foreground)}
+#nggong-turret-v1 .heading{padding-right:95px}
+#nggong-turret-v1 .workspace{display:grid;grid-template-columns:minmax(0,2fr) minmax(275px,1fr);gap:calc(var(--font-size-base)*1.2);align-items:start}
+#nggong-turret-v1 .stage-column,#nggong-turret-v1 .sidebar{min-width:0}
+#nggong-turret-v1 .sidebar{display:flex;flex-direction:column;gap:calc(var(--font-size-base)*.8)}
+#nggong-turret-v1 .sidebar table{width:100%;table-layout:fixed}
+#nggong-turret-v1 .sidebar th,#nggong-turret-v1 .sidebar td{overflow-wrap:anywhere}
+#nggong-turret-v1 .sidebar td:first-child{width:34%}
+#nggong-turret-v1[data-view="compare"] .workspace,#nggong-turret-v1[data-view="data"] .workspace{grid-template-columns:1fr}
+#nggong-turret-v1 .toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:calc(var(--font-size-base)*.7)}
+#nggong-turret-v1 .toolbar label{display:grid;gap:calc(var(--font-size-base)*.25);flex:1 1 145px}
+#nggong-turret-v1 .options,#nggong-turret-v1 .readout{display:flex;align-items:center;flex-wrap:wrap;gap:calc(var(--font-size-base)*.8)}
+#nggong-turret-v1 .fields{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--font-size-base)*1)}
+#nggong-turret-v1 .field{display:grid;gap:calc(var(--font-size-base)*.25)}
+#nggong-turret-v1 .field-label,#nggong-turret-v1 .caption{display:flex;justify-content:space-between;gap:calc(var(--font-size-base)*.5);flex-wrap:wrap}
+#nggong-turret-v1 canvas{display:block;width:100%;height:530px;touch-action:none}
+#nggong-turret-v1 .compare{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--font-size-base)*1)}
+#nggong-turret-v1 .compare canvas{height:350px}
+#nggong-turret-v1 .part,#nggong-turret-v1 .data{display:flex;flex-direction:column;gap:calc(var(--font-size-base)*.4)}
+#nggong-turret-v1 .data{gap:calc(var(--font-size-base)*1)}
+#nggong-turret-v1 .reference{width:100%;height:auto;display:block}
+#nggong-turret-v1 [hidden]{display:none!important}
+@media(max-width:620px){#nggong-turret-v1 .compare,#nggong-turret-v1 .fields{grid-template-columns:1fr}#nggong-turret-v1 .toolbar{display:grid;grid-template-columns:1fr}#nggong-turret-v1 canvas{height:350px}#nggong-turret-v1 .compare canvas{height:330px}}
+@media(max-width:850px){#nggong-turret-v1 .workspace{grid-template-columns:1fr}}
+</style>
+<div class="heading"><h2>ngGONG turret</h2><div class="text-small text-muted">GONG-style horizontal-axis turret · two mirrors + stationary lab · revision 5</div></div>
+<div class="text-small text-muted">Moving: turret head and core · Fixed: horizontal shaft axis, wall port, optical bench and receiver · Dimensions schematic</div>
+<div class="toolbar">
+<label class="form-label">View<select class="form-select" id="tv-view"><option value="drawing">Drawing-matched cutaway</option><option value="assembly">3D assembly</option><option value="reference">Original screenshot</option><option value="data">All engineering data</option></select></label>
+<label class="form-label">Mount<select class="form-select" id="tv-mount"><option value="gong">GONG horizontal-axis turret</option></select></label>
+<label class="form-label">Component<select class="form-select" id="tv-part"></select></label>
+</div>
+<div id="tv-workspace" class="workspace"><div class="stage-column">
+<div id="tv-interactive">
+<div class="options"><button class="btn btn-primary" id="tv-play" type="button">Play day sweep</button><button class="btn" id="tv-camera" type="button">Isometric view</button><label class="form-check"><input class="form-check-input" id="tv-cutaway" type="checkbox" checked><span class="form-check-label">Cutaway</span></label><label class="form-check"><input class="form-check-input" id="tv-beam" type="checkbox" checked><span class="form-check-label">Beam path</span></label><span class="text-small text-muted" id="tv-playback">20 s geometric sweep</span></div>
+<div id="tv-single"><canvas id="tv-main" role="img" aria-label="Interactive 3D schematic of the two-mirror turret. Drag to orbit the view and select a component."></canvas></div>
+<div class="caption text-small"><span id="tv-scene-caption">Schematic proportions · drag to orbit · select a callout</span><span id="tv-ray-status">Two ideal reflections</span></div>
+<div id="tv-motion">
+<div class="fields"><label class="field form-label"><span class="field-label"><span id="tv-first-label">Azimuth</span><output id="tv-first-value" class="tabular-nums"></output></span><input class="form-range" id="tv-first" type="range" step="0.1" min="0" max="360" value="140"></label><label class="field form-label"><span class="field-label"><span id="tv-second-label">Elevation</span><output id="tv-second-value" class="tabular-nums"></output></span><input class="form-range" id="tv-second" type="range" step="0.1" min="-90" max="90" value="40"></label></div>
+<label class="field form-label"><span class="field-label"><span>Site latitude</span><output class="tabular-nums" id="tv-lat-value">40° N</output></span><input class="form-range" id="tv-lat" type="range" min="0" max="65" step="0.5" value="40"></label>
+<div id="tv-direction" class="readout text-small tabular-nums"></div>
+</div>
+</div>
+<div id="tv-reference" hidden><img class="reference" alt="GONG turret draft cutaway showing entrance window, FM1, core, FM2, motors, encoders, bearings, hollow drive shaft and mirror heater." src="__REFERENCE_IMAGE__"><div class="text-small text-muted">GONG Turret Components · L. Rimmele · 19 Aug 2026 · Draft · reference geometry, not manufacturing dimensions</div></div>
+<div id="tv-data" class="data" hidden></div>
+</div><aside id="tv-sidebar" class="sidebar" aria-label="Component and engineering data">
+<div id="tv-selected" class="card part" aria-live="polite"><h3 id="tv-part-title"></h3><div id="tv-part-detail"></div><div id="tv-part-data" class="text-small"></div></div>
+<section><h3>Selected component data</h3><table class="table table-sm"><tbody id="tv-part-specs"></tbody></table></section>
+<section><h3>Hardware candidates</h3><table class="table table-sm"><tbody id="tv-hardware"></tbody></table></section>
+<section><h3>E1 assumed loads</h3><table class="table table-sm"><thead><tr><th>Quantity</th><th>HA</th><th>DEC</th></tr></thead><tbody id="tv-loads"></tbody></table><div class="text-small">Legacy HA/DEC assumptions · not this mount’s loads</div></section>
+</aside></div>
+<span class="sr-only" id="tv-announcement" aria-live="polite"></span>
+<script>/*__TURRET_MODEL__*/</script>
+<script>/*__TURRET_APP__*/</script>
+</div>

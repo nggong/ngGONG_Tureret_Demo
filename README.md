@@ -1,45 +1,35 @@
-# ngGONG Turret Demo
+# GONG-style turret and stationary lab
 
-An interactive HTML simulation designed to model and visualize the equations of motion for the ngGONG Turret system.
+Two-mirror horizontal-axis turret with a stationary lab wall, beam entry port, optical bench, and receiving aperture. The beam follows Sun → FM1 → stem → FM2 → horizontal shaft → wall port → bench receiver. The receiver is not a mirror.
 
-## 🚀 Live Demo
-**[View the Live Simulation Here](https://nggong.github.io/ngGONG_Tureret_Demo/)**
+## Publish on GitHub Pages
 
----
+1. Create a GitHub repository and upload the contents of this folder. Keep `index.html` at the repository root.
+2. In the repository, open **Settings → Pages**.
+3. Choose **Deploy from a branch**, select your branch and **/(root)**, then save.
+4. Open the Pages URL GitHub provides after deployment completes.
 
-## 📋 Overview & Key Features
-This project provides an interactive web-based environment for testing turret kinematics and control behavior without requiring specialized local software.
+`index.html` is self-contained and can also be opened directly in a browser. No npm packages, server, or secrets are needed. `.nojekyll` disables Jekyll processing.
 
-* **Equations of Motion Simulation:** Real-time calculation and visual representation of turret kinematics, angular positioning, and motion response.
-* **Interactive Motion Controls:** Adjust input parameters and control axes directly in the browser to observe dynamic system behavior.
-* **Client-Side Execution:** Runs entirely in the browser using standard HTML, CSS, and JavaScript.
+## Edit and rebuild
 
----
+Requires Node.js 20 or newer; no dependency installation is needed.
 
-## 🧪 What to Test (Team Review)
-When reviewing the live demo, please verify the following:
-1. **Control Responsiveness:** Confirm that all motion sliders, inputs, or directional controls update the turret state smoothly.
-2. **Kinematic Accuracy:** Check that angular movement, velocity, and trajectory outputs align with expected equations of motion.
-3. **Browser Compatibility:** Note any rendering glitches or frame drops across Chrome, Edge, or Firefox.
+```sh
+node build.mjs
+node test.mjs
+```
 
----
+Edit `source/turret-app.js` for rendering and lab geometry, `source/turret-model.js` for the two-mirror kinematics, and `source/turret-template.html` for controls and labels. `source/standalone-template.html` contains the standalone HTML shell and embedded styles. Rebuild and commit the resulting `index.html` after edits. All paths are relative to this package; no local-machine paths are required.
 
-## 📂 Project Structure
-* `index.html` — The main entry point containing the simulation interface and control layout.
-* `ngGONG Turret Demo_files/` — Supporting scripts, physics/math logic, stylesheets, and visual assets required for the simulation.
+## Scope
 
----
+Dimensions, axis zeros, and the horizontal +X lab bearing are schematic. Sky tracking is an illustrative sweep, not a dated solar ephemeris or controller. The wall, bench, and receiver have constant world coordinates. The primary support and output centerline stay fixed while the head and core move. Field rotation, aperture clearance, collisions, polarization, structural behavior, and servo performance are not evaluated. Legacy HA/DEC load tables are not sizing results for this mount.
 
-## 💻 Running Locally
-If you want to inspect the math logic or test changes on your own computer:
+The test checks 1,452 sky positions for fixed horizontal output, two reflections, axis mapping, mirror mounting angle, and unchanged lab mesh geometry. Use the play control and side/isometric views to inspect motion.
 
-1. Click the green **<> Code** button at the top of this page and select **Download ZIP** (or clone the repository).
-2. **Extract (unzip)** the entire folder to your computer.
-3. Double-click `index.html` to open it in Google Chrome or any modern web browser.
+## Reference assets
 
-*(Important: Keep `index.html` and the supporting files folder in the same directory so scripts and assets load properly.)*
+The included reference image is the user-supplied “GONG Turret Components,” L. Rimmele, 19 August 2026 draft. Hardware candidates and illustrative load data come from the supplied project documents.
 
----
-
-## 🤝 Feedback & Issues
-If you spot discrepancies in the motion calculations or encounter UI bugs, please open an **Issue** in this repository with details on the input values used.
+GONG arrangement reference: https://nso.edu/telescopes/nisp/gong/

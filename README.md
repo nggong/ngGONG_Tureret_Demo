@@ -3,7 +3,7 @@
 An interactive HTML simulation designed to model and visualize the equations of motion for the ngGONG Turret system.
 
 ## 🚀 Live Demo
-**[View the Live Simulation Here](https://github.io)**
+**[View the Live Simulation Here](https://nggong.github.io/ngGONG_Tureret_Demo/)**
 
 ---
 

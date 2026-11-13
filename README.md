@@ -2,6 +2,9 @@
 
 Two-mirror horizontal-axis turret with a stationary lab wall, beam entry port, optical bench, and receiving aperture. The beam follows Sun → FM1 → stem → FM2 → horizontal shaft → wall port → bench receiver. The receiver is not a mirror.
 
+Live Demo: https://nggong.github.io/ngGONG_Tureret_Demo/
+GitHub Repo & README:  https://github.com/nggong/ngGONG_Tureret_Demo
+
 ## Publish on GitHub Pages
 
 1. Create a GitHub repository and upload the contents of this folder. Keep `index.html` at the repository root.

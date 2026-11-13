@@ -5,8 +5,6 @@ An interactive HTML simulation designed to model and visualize the equations of 
 ## 🚀 Live Demo
 **[View the Live Simulation Here](https://github.io)**
 
-*(Note: Replace `Jpage200000` with your actual GitHub username.)*
-
 ---
 
 ## 📋 Overview & Key Features
@@ -28,7 +26,7 @@ When reviewing the live demo, please verify the following:
 
 ## 📂 Project Structure
 * `index.html` — The main entry point containing the simulation interface and control layout.
-* `ngGONG  Turret  Demo Files/` — Supporting scripts, physics/math logic, stylesheets, and visual assets required for the simulation.
+* `ngGONG Turret Demo_files/` — Supporting scripts, physics/math logic, stylesheets, and visual assets required for the simulation.
 
 ---
 

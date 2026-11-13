@@ -5,7 +5,7 @@ An interactive HTML simulation designed to model and visualize the equations of 
 ## 🚀 Live Demo
 **[View the Live Simulation Here](https://github.io)**
 
-*(Note: Replace `YOUR-USERNAME` with your actual GitHub username.)*
+*(Note: Replace `Jpage200000` with your actual GitHub username.)*
 
 ---
 

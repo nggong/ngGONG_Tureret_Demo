@@ -20,3 +20,15 @@ for(const p of [{m:20,l:.7,J:8,Ix:1.2,Iy:1.8,Iz:2},{m:80,l:1.5,J:.1,Ix:20,Iy:10,
 const p={m:20,l:.7,J:8,Ix:1.2,Iy:1.8,Iz:2};
 const {G}=D.terms([-.4,0],p);assert(G>0);
 console.log(JSON.stringify({parameterCases:3,transformedDerivativesAgree:true,stepHalving:true,maxAngleDifference_rad:worstAngle,maxTorqueDifference_Nm:worstTorque}));
+for(const [limitA,limitB] of [[150,1],[40,.05],[0,0]]){
+  const params={...p,limitA,limitB},r=D.simulate(params),fine=D.simulate(params,.005);
+  assert(r.rows.every(row=>[...row.L.q,...row.H.q,...row.al,...row.ah].every(Number.isFinite)));
+  for(const row of r.rows)for(let k=0;k<2;k++){
+    const lim=k?limitB:limitA;assert(Math.abs(row.al[k])<=lim+1e-12);assert(Math.abs(row.ah[k])<=lim+1e-12);
+  }
+  assert(r.maxQ<1e-5);
+  assert(Math.max(...r.rows.at(-1).L.q.map((v,k)=>Math.abs(v-fine.rows.at(-1).L.q[k])))<1e-4);
+  if(limitA===150){assert(r.peakError[0]<1e-7);assert(r.saturation[0]===0);}
+  else {assert(r.peakError[0]>.1);assert(r.saturation[0]>.1);}
+  console.log(JSON.stringify({limitA,limitB,peakError_rad:r.peakError,saturatedFraction:r.saturation,maxLH_rad:r.maxQ}));
+}

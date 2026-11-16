@@ -39,10 +39,16 @@ The included reference image is the user-supplied “GONG Turret Components,” 
 
 GONG arrangement reference: https://nso.edu/telescopes/nisp/gong/
 
-## Dynamics view (revision 6)
+## Dynamics view (revision 7)
 
 Select **Dynamics · Lagrange / Hamilton** in the View menu. Adjust head mass, stem/COM radius, core inertia and the three head principal inertias. Inputs reject nonpositive/out-of-range values and nonphysical principal-inertia triangle inequalities. Play or scrub the 12-second reference trajectory; compare angles, motor torques, and maximum formulation differences. Download CSV or copy the revealed CSV text if browser downloads are blocked.
 
-The simulations use independently integrated Euler–Lagrange angle/velocity and Hamilton angle/momentum states. Both use the same inverse-dynamics/PD control law; changing mass/inertia changes torque requirements while that law maintains the prescribed motion. This is an ideal unsaturated tracking demonstration, not a measured servo response. There are no counterweights, friction, wind or flexibility. The head COM is at the stem pivot and the core COM is on the horizontal shaft. Visual geometry remains dimensionless.
+The simulations use independently integrated Euler–Lagrange angle/velocity and Hamilton angle/momentum states. Both use the same inverse-dynamics/PD control law; changing mass/inertia changes torque requirements while that law maintains the prescribed motion. This is an ideal rigid-body tracking demonstration with adjustable symmetric torque saturation, not a measured servo response. There are no counterweights, friction, wind or flexibility. The head COM is at the stem pivot and the core COM is on the horizontal shaft. Visual geometry remains dimensionless.
 
 `test-dynamics.mjs` checks coordinate-transformed derivatives, trajectory accuracy, step-halving convergence and L/H torque/motion agreement for three physical parameter sets.
+
+### Motor torque limits and tracking error
+
+Shaft and head limits are independently adjustable, including zero torque. Limits clip the requested PD/inverse-dynamics torque at every RK4 substep in both models. High/low presets illustrate successful tracking and saturation. Angle plots include the command; separate panels show requested torque, applied torque with limit lines, and actual-minus-command error. Peak error and the fraction of saturated output samples are reported per axis. CSV adds commanded angles, L/H errors and applied torques.
+
+These are constant joint-torque limits, not speed-dependent motor curves or thermal/current limits. With no counterweights or travel stops the low-limit model can rotate far beyond a real turret’s travel; do not interpret those trajectories as permissible hardware motion. Numerical convergence and L/H agreement are tested for high, low and zero torque.

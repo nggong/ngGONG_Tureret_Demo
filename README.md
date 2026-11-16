@@ -52,3 +52,7 @@ The simulations use independently integrated Euler–Lagrange angle/velocity and
 Shaft and head limits are independently adjustable, including zero torque. Limits clip the requested PD/inverse-dynamics torque at every RK4 substep in both models. High/low presets illustrate successful tracking and saturation. Angle plots include the command; separate panels show requested torque, applied torque with limit lines, and actual-minus-command error. Peak error and the fraction of saturated output samples are reported per axis. CSV adds commanded angles, L/H errors and applied torques.
 
 These are constant joint-torque limits, not speed-dependent motor curves or thermal/current limits. With no counterweights or travel stops the low-limit model can rotate far beyond a real turret’s travel; do not interpret those trajectories as permissible hardware motion. Numerical convergence and L/H agreement are tested for high, low and zero torque.
+
+## Guided operating sequence
+
+The default view is a draft SFC with Next/Back, autoplay, Hold and Fault branches. It steps through Stowed, Prepare, Acquire Sun, Track, Stop tracking, Move to stow, and Stowed. The parked entrance faces down (schematic shaft rotation +90°, head rotation 0°) with an illustrated cover closed. Real stow angles, weather sealing, interlocks and recovery behavior remain to be defined. Engineering dynamics remain optional. Edit source/sequence.js to replace step descriptions, poses and transitions.

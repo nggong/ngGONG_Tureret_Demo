@@ -4,7 +4,7 @@ Two-mirror horizontal-axis turret with a stationary lab wall, beam entry port, o
 
 Live Demo: https://nggong.github.io/ngGONG_Tureret_Demo/
 
-GitHub Repo & README:  https://github.com/nggong/ngGONG_Tureret_Demo
+GitHub Repo: https://github.com/nggong/ngGONG_Tureret_Demo
 
 ## Publish on GitHub Pages
 
@@ -22,6 +22,7 @@ Requires Node.js 20 or newer; no dependency installation is needed.
 ```sh
 node build.mjs
 node test.mjs
+node test-dynamics.mjs
 ```
 
 Edit `source/turret-app.js` for rendering and lab geometry, `source/turret-model.js` for the two-mirror kinematics, and `source/turret-template.html` for controls and labels. `source/standalone-template.html` contains the standalone HTML shell and embedded styles. Rebuild and commit the resulting `index.html` after edits. All paths are relative to this package; no local-machine paths are required.
@@ -37,3 +38,11 @@ The test checks 1,452 sky positions for fixed horizontal output, two reflections
 The included reference image is the user-supplied “GONG Turret Components,” L. Rimmele, 19 August 2026 draft. Hardware candidates and illustrative load data come from the supplied project documents.
 
 GONG arrangement reference: https://nso.edu/telescopes/nisp/gong/
+
+## Dynamics view (revision 6)
+
+Select **Dynamics · Lagrange / Hamilton** in the View menu. Adjust head mass, stem/COM radius, core inertia and the three head principal inertias. Inputs reject nonpositive/out-of-range values and nonphysical principal-inertia triangle inequalities. Play or scrub the 12-second reference trajectory; compare angles, motor torques, and maximum formulation differences. Download CSV or copy the revealed CSV text if browser downloads are blocked.
+
+The simulations use independently integrated Euler–Lagrange angle/velocity and Hamilton angle/momentum states. Both use the same inverse-dynamics/PD control law; changing mass/inertia changes torque requirements while that law maintains the prescribed motion. This is an ideal unsaturated tracking demonstration, not a measured servo response. There are no counterweights, friction, wind or flexibility. The head COM is at the stem pivot and the core COM is on the horizontal shaft. Visual geometry remains dimensionless.
+
+`test-dynamics.mjs` checks coordinate-transformed derivatives, trajectory accuracy, step-halving convergence and L/H torque/motion agreement for three physical parameter sets.

@@ -56,3 +56,7 @@ These are constant joint-torque limits, not speed-dependent motor curves or ther
 ## Guided operating sequence
 
 The default view is a draft SFC with Next/Back, autoplay, Hold and Fault branches. It steps through Stowed, Prepare, Acquire Sun, Track, Stop tracking, Move to stow, and Stowed. The parked entrance faces down (schematic shaft rotation +90°, head rotation 0°) with an illustrated cover closed. Real stow angles, weather sealing, interlocks and recovery behavior remain to be defined. Engineering dynamics remain optional. Edit source/sequence.js to replace step descriptions, poses and transitions.
+
+### Bad-weather branch
+
+Bad weather interrupts the normal sequence: Stop tracking / close cover → Move to downward stow → Weather-stowed. Next advances each illustrated step. The normal chart, autoplay, Hold, Fault and Restart are locked while in the weather branch. Weather cleared resets the demonstration to its initial Stowed state, never directly to Track. Wind, precipitation, clear-weather delay and restart permission are placeholders. This is an explanatory SFC, not implemented protection logic.

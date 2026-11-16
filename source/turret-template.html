@@ -25,10 +25,10 @@
 @media(max-width:620px){#nggong-turret-v1 .compare,#nggong-turret-v1 .fields{grid-template-columns:1fr}#nggong-turret-v1 .toolbar{display:grid;grid-template-columns:1fr}#nggong-turret-v1 canvas{height:350px}#nggong-turret-v1 .compare canvas{height:330px}}
 @media(max-width:850px){#nggong-turret-v1 .workspace{grid-template-columns:1fr}}
 </style>
-<div class="heading"><h2>ngGONG turret</h2><div class="text-small text-muted">GONG-style horizontal-axis turret · two mirrors + stationary lab · revision 5</div></div>
+<div class="heading"><h2>ngGONG turret</h2><div class="text-small text-muted">GONG-style horizontal-axis turret · two mirrors + stationary lab · revision 6 · dynamics</div></div>
 <div class="text-small text-muted">Moving: turret head and core · Fixed: horizontal shaft axis, wall port, optical bench and receiver · Dimensions schematic</div>
 <div class="toolbar">
-<label class="form-label">View<select class="form-select" id="tv-view"><option value="drawing">Drawing-matched cutaway</option><option value="assembly">3D assembly</option><option value="reference">Original screenshot</option><option value="data">All engineering data</option></select></label>
+<label class="form-label">View<select class="form-select" id="tv-view"><option value="drawing">Drawing-matched cutaway</option><option value="assembly">3D assembly</option><option value="dynamics">Dynamics · Lagrange / Hamilton</option><option value="reference">Original screenshot</option><option value="data">All engineering data</option></select></label>
 <label class="form-label">Mount<select class="form-select" id="tv-mount"><option value="gong">GONG horizontal-axis turret</option></select></label>
 <label class="form-label">Component<select class="form-select" id="tv-part"></select></label>
 </div>
@@ -54,4 +54,5 @@
 <span class="sr-only" id="tv-announcement" aria-live="polite"></span>
 <script>/*__TURRET_MODEL__*/</script>
 <script>/*__TURRET_APP__*/</script>
+<script>/*__DYNAMICS__*/</script>
 </div>

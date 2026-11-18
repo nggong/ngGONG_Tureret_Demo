@@ -1846,6 +1846,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;div id=&quot;nggong-turret-v1&quot;&gt;
 &lt;style&gt;
 #nggong-turret-v1{display:flex;flex-direction:column;gap:calc(var(--font-size-base)*.8);color:var(--foreground)}
+#nggong-turret-v1 .safety-note{padding:10px 12px;border-left:4px solid var(--orange,#d98216);border-radius:6px;background:color-mix(in srgb,var(--orange,#d98216) 9%,var(--background));font-size:var(--font-size-small);line-height:1.45}
 #nggong-turret-v1 .heading{padding-right:95px}
 #nggong-turret-v1 .workspace{display:grid;grid-template-columns:minmax(0,2fr) minmax(275px,1fr);gap:calc(var(--font-size-base)*1.2);align-items:start}
 #nggong-turret-v1 .stage-column,#nggong-turret-v1 .sidebar{min-width:0}
@@ -1877,6 +1878,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;label class=&quot;form-label&quot;&gt;Mount&lt;select class=&quot;form-select&quot; id=&quot;tv-mount&quot;&gt;&lt;option value=&quot;gong&quot;&gt;GONG horizontal-axis turret&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
 &lt;label class=&quot;form-label&quot;&gt;Component&lt;select class=&quot;form-select&quot; id=&quot;tv-part&quot;&gt;&lt;/select&gt;&lt;/label&gt;
 &lt;/div&gt;
+&lt;aside class=&quot;safety-note&quot; role=&quot;note&quot;&gt;&lt;strong&gt;Station 0 motion safety:&lt;/strong&gt; This demonstration is illustrative. It is not a site risk assessment, SIS or safety-function test, or authorization to move hardware. Before real motion, obtain Station 0 operations/safety approval for a task-specific hazard assessment and test plan. Define the swept hazard zone, access controls, authorized roles, communications, safeguards/stops, and site energy-control steps. Validate safety functions separately under their approved procedure. Stop if site conditions differ.&lt;/aside&gt;
 &lt;div id=&quot;tv-workspace&quot; class=&quot;workspace&quot;&gt;&lt;div class=&quot;stage-column&quot;&gt;
 &lt;div id=&quot;tv-interactive&quot;&gt;
 &lt;div class=&quot;options&quot;&gt;&lt;button class=&quot;btn btn-primary&quot; id=&quot;tv-play&quot; type=&quot;button&quot;&gt;Play day sweep&lt;/button&gt;&lt;button class=&quot;btn&quot; id=&quot;tv-camera&quot; type=&quot;button&quot;&gt;Isometric view&lt;/button&gt;&lt;label class=&quot;form-check&quot;&gt;&lt;input class=&quot;form-check-input&quot; id=&quot;tv-cutaway&quot; type=&quot;checkbox&quot; checked&gt;&lt;span class=&quot;form-check-label&quot;&gt;Cutaway&lt;/span&gt;&lt;/label&gt;&lt;label class=&quot;form-check&quot;&gt;&lt;input class=&quot;form-check-input&quot; id=&quot;tv-beam&quot; type=&quot;checkbox&quot; checked&gt;&lt;span class=&quot;form-check-label&quot;&gt;Beam path&lt;/span&gt;&lt;/label&gt;&lt;span class=&quot;text-small text-muted&quot; id=&quot;tv-playback&quot;&gt;20 s geometric sweep&lt;/span&gt;&lt;/div&gt;
